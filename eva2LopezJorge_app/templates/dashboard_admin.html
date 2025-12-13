@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Administrador</title>
+</head>
+<body>
+    <h1>Panel Administrador</h1>
+    <p>Usuario: {{ usuario.nombre }} ({{ usuario.get_perfil_display }})</p>
+    <ul>
+        <li><a href="/admin/">Ir al panel de administración de Django</a></li>
+        <li><a href="/liquidaciones/">Ver módulo de liquidaciones</a></li>
+    </ul>
+    <p><a href="{% url 'logout' %}">Cerrar sesión</a></p>
+</body>
+</html>

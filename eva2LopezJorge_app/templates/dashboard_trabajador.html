@@ -1,0 +1,19 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Trabajador</title>
+</head>
+<body>
+    <h1>Panel Trabajador</h1>
+    <p>Usuario: {{ usuario.nombre }} ({{ usuario.get_perfil_display }})</p>
+    {% if liquidacion %}
+        <h2>Liquidación del mes {{ mes }}/{{ anio }}</h2>
+        {% include "eva2Trabajador_app/liquidacion_detalle.html" with liquidacion=liquidacion %}
+    {% else %}
+        <p>No hay liquidación registrada para este mes.</p>
+    {% endif %}
+    <p><a href="{% url 'logout' %}">Cerrar sesión</a></p>
+</body>
+</html>

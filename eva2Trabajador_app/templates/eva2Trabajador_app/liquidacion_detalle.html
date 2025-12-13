@@ -1,0 +1,24 @@
+{% load static %}
+<div>
+    <img src="{% static 'img/logo.png' %}" alt="Logo empresa" style="max-height:80px;">
+    <h3>Datos del trabajador</h3>
+    <p>RUT: {{ liquidacion.rut }}</p>
+    {% if trabajador %}
+        <p>Nombre: {{ trabajador.nombre }}</p>
+    {% endif %}
+    <h3>Detalle de liquidación</h3>
+    <p>Sueldo base: {{ liquidacion.sbase }}</p>
+    <p>Sueldo bruto: {{ liquidacion.sbruto }}</p>
+    <h4>Descuentos</h4>
+    <ul>
+        {% for d in descuentos %}
+            <li>{{ d.concepto }}: {{ d.monto }}</li>
+        {% empty %}
+            <li>No hay descuentos adicionales.</li>
+        {% endfor %}
+    </ul>
+    <p>Descuento AFP: {{ liquidacion.desc_afp }}</p>
+    <p>Descuentos adicionales: {{ liquidacion.descuentos }}</p>
+    <p>Descuentos totales: {{ liquidacion.descuentos_totales }}</p>
+    <h3>Sueldo líquido: {{ liquidacion.sueldo_liquido }}</h3>
+</div>

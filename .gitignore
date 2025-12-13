@@ -1,0 +1,27 @@
+# Entorno virtual
+venv/
+env/
+
+# Archivos compilados
+*.pyc
+__pycache__/
+
+# Archivos de configuración local
+*.sqlite3
+*.log
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Carpetas de VSCode
+.vscode/
+
+# Migraciones (opcional, pero si ya están correctas NO ignores)
+# */migrations/
+
+# Entorno de JetBrains
+.idea/
+
+# Archivos generados
+*.zip

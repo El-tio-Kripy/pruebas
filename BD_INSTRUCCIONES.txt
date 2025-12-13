@@ -1,0 +1,48 @@
+PASOS PARA CREAR LA BASE DE DATOS eva2LopezJorge EN MARIADB
+
+1) Abrir la consola de MariaDB:
+
+   mysql -u root -p
+
+   (o usa tu usuario de MariaDB)
+
+2) Crear la base de datos con el nombre solicitado en la evaluación:
+
+   CREATE DATABASE eva2LopezJorge CHARACTER SET utf8mb4;
+
+3) Verificar que la base fue creada:
+
+   SHOW DATABASES;
+
+4) Editar el archivo eva2LopezJorge_prj/eva2LopezJorge_prj/settings.py y ajustar:
+
+   USER = "tu_usuario_mariadb"
+   PASSWORD = "tu_password_mariadb"
+
+5) Volver a la carpeta del proyecto y ejecutar:
+
+   python manage.py makemigrations
+   python manage.py migrate
+
+   Esto creará las tablas usando los modelos definidos (Usuarios, Afps, Trabajador,
+   Descuentos, Liquidaciones).
+
+6) Crear el superusuario para el administrador de Django (según evaluación: Eva2 / Evaluacion2):
+
+   python manage.py createsuperuser
+
+   Username: Eva2
+   Email address: (puede ser vacío o algo como eva2@example.com)
+   Password: Evaluacion2
+   Password (again): Evaluacion2
+
+7) Ejecutar el servidor de desarrollo:
+
+   python manage.py runserver
+
+   Luego abrir en el navegador:
+
+   http://127.0.0.1:8000/      -> formulario de login
+   http://127.0.0.1:8000/admin -> panel administrador Django
+
+NOTA: Para el perfil Trabajador se asume que el username coincide con el RUT del trabajador.

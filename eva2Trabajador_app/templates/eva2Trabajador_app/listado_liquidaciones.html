@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Listado de Liquidaciones</title>
+</head>
+<body>
+    <h1>Liquidaciones del mes {{ mes }}/{{ anio }}</h1>
+    {% if liquidaciones %}
+        <ul>
+            {% for liq in liquidaciones %}
+                <li>
+                    {{ liq.rut }} - Sueldo líquido: {{ liq.sueldo_liquido }}
+                    <a href="{% url 'ver_liquidacion' liq.rut liq.mes liq.anio %}">Ver detalle</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay liquidaciones registradas.</p>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Jefe de Sección</title>
+</head>
+<body>
+    <h1>Panel Jefe de Sección</h1>
+    <p>Usuario: {{ usuario.nombre }} ({{ usuario.get_perfil_display }})</p>
+    <form method="get">
+        <label>Mes: <input type="number" name="mes" min="1" max="12" value="{{ mes }}"></label>
+        <label>Año: <input type="number" name="anio" value="{{ anio }}"></label>
+        <button type="submit">Buscar liquidaciones</button>
+    </form>
+    {% if liquidaciones is not None %}
+        <h2>Resultados</h2>
+        {% if liquidaciones %}
+            <ul>
+                {% for liq in liquidaciones %}
+                    <li>
+                        {{ liq.rut }} - {{ liq.mes }}/{{ liq.anio }} - Sueldo líquido: {{ liq.sueldo_liquido }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No hay liquidaciones para ese mes/año.</p>
+        {% endif %}
+    {% endif %}
+    <p><a href="{% url 'logout' %}">Cerrar sesión</a></p>
+</body>
+</html>
