@@ -34,6 +34,16 @@ class DescuentosForm(forms.ModelForm):
             if trabajador:
                 self.fields["trabajador"].initial = trabajador
 
+    def clean(self):
+        cleaned = super().clean()
+
+        # Copiamos el RUT antes de validar el modelo para que la verificación
+        # de existencia de trabajador funcione con el RUT correcto.
+        trabajador = cleaned.get("trabajador")
+        if trabajador:
+            self.instance.rut = trabajador.rut
+        return cleaned
+
     def save(self, commit=True):
         # Copiamos el rut del trabajador seleccionado al modelo
         trabajador = self.cleaned_data["trabajador"]
